@@ -1,0 +1,68 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: pf_g1_demo_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: pf_g1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d pf_g1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  back:
+    build:
+      context: https://github.com/kevinwagner96/PF-G1-Back.git#main
+    container_name: pf_g1_demo_back
+    restart: unless-stopped
+    environment:
+      APP_NAME: PF-G1 API
+      ENVIRONMENT: demo
+      APP_DEBUG: "false"
+      API_V1_PREFIX: /api/v1
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/pf_g1
+      SCHEDULER_BASE_URL: http://scheduler:3020
+      SCHEDULER_CALLBACK_TOKEN: dev-scheduler-token
+      BACKEND_CORS_ORIGINS: '["http://localhost:3000","http://127.0.0.1:3000"]'
+    ports:
+      - "3010:3010"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  scheduler:
+    build:
+      context: https://github.com/LucasCttr/pf-or-scheduler.git#scheduler-api
+    container_name: pf_g1_demo_scheduler
+    restart: unless-stopped
+    environment:
+      BACK_CALLBACK_URL: http://back:3010/api/v1/scheduler/callback
+      SCHEDULER_CALLBACK_TOKEN: dev-scheduler-token
+    ports:
+      - "3020:3020"
+    depends_on:
+      - back
+
+  front:
+    build:
+      context: https://github.com/kevinwagner96/PF-G1-Front.git#main
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://127.0.0.1:3010/api/v1
+    container_name: pf_g1_demo_front
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://127.0.0.1:3010/api/v1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - back
+
+volumes:
+  postgres_data:
