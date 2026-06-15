@@ -1,13 +1,13 @@
 # PF-G1-Demo Agent Notes
 
 ## Purpose
-Docker Compose launcher for the full PF-G1 demo. This repo does not contain application code; it builds the app services from sibling project folders or the scheduler repository declared in `docker-compose.yml`.
+Docker Compose launcher for the full PF-G1 demo. This repo does not contain application code; it builds the app services from the Git repositories declared in `docker-compose.yml`.
 
 ## Services
 - `db`: PostgreSQL 16.
-- `back`: builds `PF-G1-Back-Django`.
+- `back`: builds `PF-G1-Back-Django` from `main`.
 - `scheduler`: builds `pf-or-scheduler` from `scheduler-api`.
-- `front`: builds `PF-G1-Front`.
+- `front`: builds `PF-G1-Front` from `main`.
 
 ## Commands
 ```bash

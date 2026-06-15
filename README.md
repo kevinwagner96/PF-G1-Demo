@@ -9,10 +9,10 @@ Orquestador Docker para levantar la demo completa de PF-G1 con un solo comando.
 - Scheduler: http://127.0.0.1:3020
 - PostgreSQL: interno en Docker como `db:5432`, base `pf_g1_django`
 
-Durante la migración Django, el compose construye Back y Front desde carpetas locales:
+El compose construye las apps desde GitHub para que alcance con clonar este repo y ejecutar Docker Compose:
 
-- Back: ../PF-G1-Back-Django
-- Front: ../PF-G1-Front
+- Back: https://github.com/kevinwagner96/PF-G1-Back-Django.git#main
+- Front: https://github.com/kevinwagner96/PF-G1-Front.git#main
 - Scheduler: https://github.com/LucasCttr/pf-or-scheduler.git#scheduler-api
 
 ## Ejecutar

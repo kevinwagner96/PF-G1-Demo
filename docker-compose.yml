@@ -17,7 +17,7 @@ services:
 
   back:
     build:
-      context: ../PF-G1-Back-Django
+      context: https://github.com/kevinwagner96/PF-G1-Back-Django.git#main
     container_name: pf_g1_demo_back
     restart: unless-stopped
     environment:
@@ -50,7 +50,7 @@ services:
 
   front:
     build:
-      context: ../PF-G1-Front
+      context: https://github.com/kevinwagner96/PF-G1-Front.git#main
       args:
         NEXT_PUBLIC_API_BASE_URL: http://localhost:3010/api/v1
     container_name: pf_g1_demo_front
