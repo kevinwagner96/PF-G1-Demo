@@ -31,6 +31,7 @@ Usuarios de prueba:
 
 | Rol | Email | Password |
 | --- | --- | --- |
+| System Admin | sysadmin@hospital.com | sysadmin123 |
 | Administrador | admin@hospital.com | admin123 |
 | Cirujano | cirujano@hospital.com | cirujano123 |
 | Jefe Quirofano | jefe@hospital.com | jefe123 |
@@ -51,5 +52,6 @@ docker compose down -v
 - PostgreSQL no se publica en `localhost:5432` para evitar conflictos con una DB local ya levantada.
 - El Back se conecta a la DB por la red interna de Docker usando `db:5432`.
 - El Front nunca llama directo al Scheduler.
+- Django Admin está en `http://127.0.0.1:3010/admin/` y se usa con el usuario `System Admin`.
 - El Back aplica migraciones al iniciar.
 - El Scheduler envia el resultado final al Back por callback interno de Docker Compose.
