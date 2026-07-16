@@ -13,7 +13,7 @@ El compose construye las apps desde GitHub para que alcance con clonar este repo
 
 - Back: https://github.com/kevinwagner96/PF-G1-Back-Django.git#main
 - Front: https://github.com/kevinwagner96/PF-G1-Front.git#main
-- Scheduler: https://github.com/LucasCttr/pf-or-scheduler.git#scheduler-api
+- Scheduler: https://github.com/LucasCttr/pf-or-scheduler.git#vs_procedures
 
 ## Ejecutar
 
