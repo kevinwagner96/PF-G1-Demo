@@ -6,7 +6,7 @@ Docker Compose launcher for the full PF-G1 demo. This repo does not contain appl
 ## Services
 - `db`: PostgreSQL 16.
 - `back`: builds `PF-G1-Back-Django` from `main`.
-- `scheduler`: builds `pf-or-scheduler` from `vs_procedures`.
+- `scheduler`: builds `pf-or-scheduler` from `decoder`.
 - `front`: builds `PF-G1-Front` from `main`.
 
 ## Commands

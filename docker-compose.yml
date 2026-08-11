@@ -37,7 +37,7 @@ services:
 
   scheduler:
     build:
-      context: https://github.com/LucasCttr/pf-or-scheduler.git#vs_procedures
+      context: https://github.com/LucasCttr/pf-or-scheduler.git#decoder
     container_name: pf_g1_demo_scheduler
     restart: unless-stopped
     environment:
