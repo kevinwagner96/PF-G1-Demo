@@ -23,6 +23,7 @@ services:
     environment:
       DJANGO_SECRET_KEY: demo-secret-key-change-me
       DJANGO_DEBUG: "false"
+      DEMO_RESET_ENABLED: ${DEMO_RESET_ENABLED:-false}
       DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,back
       DATABASE_URL: postgresql://postgres:postgres@db:5432/pf_g1_django
       SCHEDULER_BASE_URL: http://scheduler:3020
